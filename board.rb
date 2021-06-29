@@ -1,4 +1,4 @@
-require '/home/julian/W3D2/board.rb'
+require '/Users/sydneyparsons/Documents/App_Academy_Work/W3/W3D2/card.rb'
 require 'byebug'
 class Board
 
@@ -8,7 +8,7 @@ class Board
         end
         @grid = Array.new(num) { Array.new(num, nil) }
     end
-
+    
     def populate
         alpha = ("A".."Z").to_a
         pairs = @grid.length ** 2 / 2
@@ -19,15 +19,18 @@ class Board
                 pair << picked
             end
         end
+        # debugger
+        placed = false
         while @grid.flatten.count(nil) != 0 #while the grid contains nil
-            pair.each do |card| 
-                placed = false   
-                while !placed
-                    placed = true    
+            pair.each do |card|
+                # debugger 
+                placed = true   
+                while placed
+                    placed = false    
                     x = rand(0...@grid.length) #x= 0
                     y = rand(0...@grid.length)   
                     if @grid[x][y] == nil
-                        placed = false
+                        placed = true
                         @grid[x][y] = card #intialize new card instance
             
                     end
