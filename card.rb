@@ -2,7 +2,7 @@
 class Card
     attr_reader :char
     def initialize(char)
-        @state = false #false face up, true is face down
+        @state = true #true is face up and false is face down
         @char = char
     end
 

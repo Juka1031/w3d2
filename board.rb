@@ -1,4 +1,4 @@
-require '/home/julian/W3D2/board.rb'
+require_relative 'card.rb'
 require 'byebug'
 class Board
 
@@ -21,14 +21,14 @@ class Board
         end
         while @grid.flatten.count(nil) != 0 #while the grid contains nil
             pair.each do |card| 
-                placed = false   
-                while !placed
-                    placed = true    
+                placed = false   #placed = true
+                while !placed   #while placed == true
+                    placed = false    #plaed = false
                     x = rand(0...@grid.length) #x= 0
                     y = rand(0...@grid.length)   
                     if @grid[x][y] == nil
-                        placed = false
-                        @grid[x][y] = card #intialize new card instance
+                        placed = true #placed= true
+                        @grid[x][y] = Card.new(card) #intialize new card instance
             
                     end
                 end
@@ -46,17 +46,21 @@ class Board
             count += 1
         end
         puts
-        @grid.each_with_index do |sub_array, idx|
-            puts "#{idx} " + sub_array.join(" ")
+        @grid.each_with_index do |row, idx|
+            
+            puts "#{idx} " + row.join(" ")
         end
 
     end
 
     def won?
-
+        @grid.all? { |row| row.all? { |card| card.state == true }}
     end
 
-    def reveal
+    def reveal(pos)
+        if @grid[pos[0]][pos[1]].state == false #so if guessed postiion is face down we flip it
+            #we call some method
+        end
     end
 
 end
