@@ -47,8 +47,15 @@ class Board
         end
         puts
         @grid.each_with_index do |row, idx|
-            
-            puts "#{idx} " + row.join(" ")
+            print "#{idx} "
+            row.each do |card|
+                if card.state == true
+                    print card.to_s + " "
+                else
+                    print " "
+                end
+            end
+            puts
         end
 
     end
@@ -59,7 +66,7 @@ class Board
 
     def reveal(pos)
         if @grid[pos[0]][pos[1]].state == false #so if guessed postiion is face down we flip it
-            #we call some method
+            @grid[pos[0]][pos[1]].turn_over #we call some method
         end
     end
 
