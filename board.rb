@@ -60,6 +60,10 @@ class Board
 
     end
 
+    def [](pos)
+        @grid[pos[0]][pos[1]].to_s
+    end
+
     def won?
         @grid.all? { |row| row.all? { |card| card.state == true }}
     end
