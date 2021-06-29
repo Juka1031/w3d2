@@ -1,6 +1,6 @@
 
 class Card
-
+    attr_reader :char
     def initialize(char)
         @state = false #false face up, true is face down
         @char = char
@@ -11,11 +11,11 @@ class Card
     end
 
     def to_s
-        @card.to_s
+        @char.to_s
     end
 
     def ==(char_2)
-        self.char == char2
+        @char == char_2
     end
 
 end
