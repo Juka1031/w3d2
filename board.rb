@@ -13,22 +13,24 @@ class Board
         alpha = ("A".."Z").to_a
         #lets populate this grid with num**2 / 2 pairs
         pairs = @grid.length ** 2 / 2
-        pair = []
+        pair = [] #pair will contain 8 charcs
         while pair.length != pairs
             picked = alpha.sample
             if !pair.include?(picked)
                 pair << picked
             end
         end
+        pair_pos=0
+        while @grid.count(nil) != 0 #while the grid contains nil
 
-        while @grid.count(nil) != 0
-            x = rand(0...@grid.length)
-            y = rand(0...@grid.length)
-
-            
-
-
-
+            pair.each do |card| #ABCDEFGH
+                x = rand(0...@grid.length) #x= 0
+                y = rand(0...@grid.length)  #y=0
+                if @grid[x][y] == nil #if spot is empty
+                    @grid[x][y] = Card.new(card) #intialize new card instance
+                end
+            end
+        end
     end
 
     def render
